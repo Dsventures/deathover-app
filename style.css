@@ -7,7 +7,7 @@
         left: 50%;
         transform: translate(-50%, -50%) ;
         width: 100%;
-        max-width: 375px;
+        max-width: 320px;
 }
 
 .tv9-interactives>* {
@@ -27,7 +27,7 @@
     width: 300px;
     margin: 0 auto;
     min-height: 418px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     background-color: #ccc;
     background-image: url("img/card-bg.jpg");
     display: flex;
@@ -53,7 +53,10 @@
     display: flex;
     column-gap: 5px;
 }
-.tv9-interactives .card-btns2 button{
+.tv9-interactives #method {
+    background-color: transparent; border: none;cursor: pointer;;
+}
+.tv9-interactives .card-btns2 button, #resetBtn{
     outline: none;
     border: none;
     padding: 5px 10px;
@@ -63,7 +66,7 @@
     background-color: #ff0000;
     color: #FFF;
 }
-.tv9-interactives .card-btns2 button:last-child{
+.tv9-interactives .card-btns2 button:last-child, #resetBtn{
     background-color: #000;
     color: #FFF;
 }
@@ -73,7 +76,7 @@
 }
 
 .tv9-interactives .cardA{
-    width: fit-content; height: fit-content; margin: 0 auto;
+    width: fit-content; height: fit-content; margin: 0 auto;margin-bottom: 15px;
 }
 .tv9-interactives .cardA .datapoints{
     position: absolute; list-style: none; color: #fff; padding: 0;
