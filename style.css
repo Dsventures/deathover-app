@@ -49,7 +49,7 @@
     font-weight: 500;
 }
 .tv9-interactives .card-btns2 {
-    margin-top: 15px;
+    margin-top: 55px;
     display: flex;
     column-gap: 5px;
 }
@@ -80,7 +80,7 @@
 }
 .tv9-interactives .cardA .datapoints{
     position: absolute; list-style: none; color: #fff; padding: 0;
-    width: 58px; text-align: left; font-size: 12px;font-weight: 900;margin-top: 10px;
+    width: 72px; text-align: left; font-size: 12px;font-weight: 900;margin-top: 10px;
     margin-left: 10px;
 }
 .tv9-interactives .cardA .datapoints li{
@@ -90,7 +90,7 @@
     border-bottom: none; 
 }
 .tv9-interactives .cardA .datapoints span{
-    display: block;font-size: 30px;font-weight: 400; line-height: 30px;
+    display: block;font-size: 28px;font-weight: 400; line-height: 30px;
 }
 
 /* ==================================== */
@@ -141,4 +141,39 @@
     position: absolute;
     right: 0;
     top: -40px;
+}
+
+.datapoints li {
+    opacity: 0;
+    margin-left: -20px;
+}
+
+.datapoints li:first-child {
+    animation: fadeInLeft 0.5s 0s forwards cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+
+.datapoints li:nth-child(2) {
+    animation: fadeInLeft 0.5s 0.5s forwards cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+
+.datapoints li:nth-child(3) {
+    animation: fadeInLeft 0.5s 1s forwards cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+
+
+@keyframes fadeInLeft {
+    to {
+        opacity: 1;
+        margin-left: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
