@@ -1,13 +1,19 @@
+.tv9-interactive__wrapper{
+    position: relative;
+    overflow: hidden;
+    width: 100%; margin: 0 0 20px 0;
+}
 .tv9-interactives {
-    /* margin: 0 auto; */
-        min-height: 410px;
+    margin: 0 auto;
+        height: auto;
         border-radius: 10px;
-        position: absolute;
-        top: 50%;
+        position: relative;
+        /* top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) ;
+        transform: translate(-50%, -50%) ; */
         width: 100%;
         max-width: 320px;
+        margin-bottom: 20px;
 }
 
 .tv9-interactives>* {
@@ -23,6 +29,10 @@
     margin: 0 0 15px 0;
     text-transform: uppercase;
 }
+/* .tv9-interactives p {
+    margin: 0 0 15px 0;
+} */
+.tv9-interactives__lead { font-size: 14px; line-height: 16px;width: 280px;margin: 0 auto 15px auto;}
 .tv9-interactives .card {
     width: 300px;
     margin: 0 auto;
@@ -39,6 +49,10 @@
     margin-bottom: 15px;
     background-repeat: no-repeat;
 }
+
+.tv9-interactives__points{
+    display: flex; justify-content: space-between; column-gap: 10px; margin-bottom: 20px;
+}
 .tv9-interactives #teamA, .tv9-interactives #teamB, .tv9-interactives #playerName {
     background-color: #000;
     color: #fff;
@@ -46,7 +60,7 @@
     font-size: 16px;
 }
 .tv9-interactives .card p {
-    font-weight: 500;
+    font-weight: 500;margin: 0 0 10px 0;
 }
 .tv9-interactives .card-btns2 {
     margin-top: 55px;
@@ -84,7 +98,7 @@
     margin-left: 10px;
 }
 .tv9-interactives .cardA .datapoints li{
-    border-bottom: 1px solid #fff; margin-bottom: 5px; padding-bottom: 5px;
+    border-bottom: 1px solid #fff; margin-bottom: 5px; padding-bottom: 5px;line-height: 12px;
 }
 .tv9-interactives .cardA .datapoints li:last-child{
     border-bottom: none; 
@@ -96,10 +110,10 @@
 /* ==================================== */
 /* ModelBox */
 
-.modelbox {
+.tv9-interactive__wrapper .modelbox {
     position: absolute;
     background-color: #ccc;
-    width: 300px;
+    width: 250px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -111,7 +125,7 @@
     text-align: center;
 }
 
-.model-blackout {
+.tv9-interactive__wrapper .model-blackout {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -120,17 +134,17 @@
     z-index: 49;
 }
 
-.modelbox .modelbox__inner {
+.tv9-interactive__wrapper .modelbox .modelbox__inner {
     position: relative;
     min-height: 380px;
     box-sizing: border-box;
 }
 
-.modelbox .modelbox__content {
+.tv9-interactive__wrapper .modelbox .modelbox__content {
     margin-top: 40px;
 }
 
-.modelbox #closeBtn {
+.tv9-interactive__wrapper .modelbox #closeBtn {
     background-color: #000;
     color: #fff;
     border-radius: 50%;
@@ -176,4 +190,12 @@
     100% {
         opacity: 1;
     }
+}
+
+@media (max-width:767px) {
+    
+    .tv9-interactive__wrapper {
+        margin: 20px 0;
+    }
+    .tv9-interactive__wrapper .modelbox {width: 300px;}
 }
