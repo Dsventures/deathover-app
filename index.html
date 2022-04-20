@@ -45,43 +45,26 @@
         What is this widget? You can know the prediction of a bowler's
         performance in the ongoing IPL based on our calculations.
       </p>
-      <div class="card" style="display: flex">
+      <div class="card" style="display: flex; column-gap: 5px">
         <p>So, lets start by selecting a team</p>
-        <div>
-          <select id="teamA">
+        <div style="display: flex">
+          <select id="teamA" style="width: 50%">
             <option>Batting</option>
-            <option value="CSK">CSK</option>
-            <option value="DC">DC</option>
-            <option value="GT">GT</option>
-            <option value="KKR">KKR</option>
-            <option value="LSG">LSG</option>
-            <option value="MI">MI</option>
-            <option value="PK">PK</option>
-            <option value="RR">RR</option>
-            <option value="RCB">RCB</option>
-            <option value="SH">SH</option>
+            <option value="MI">Mumbai Indians</option>
+            <option value="PK">Punjab Kings</option>
+            <option value="DC">Delhi Capitals</option>
+            <option value="LSG">Lucknow Super Giants</option>
+            <option value="RR">Rajasthan Royals (Dark House)</option>
           </select>
-          <select id="teamB">
+
+          <select id="teamB" style="width: 50%">
             <option>Bowling</option>
-            <option value="CSK">CSK</option>
-            <option value="DC">DC</option>
-            <option value="GT">GT</option>
-            <option value="KKR">KKR</option>
-            <option value="LSG">LSG</option>
-            <option value="MI">MI</option>
-            <option value="PK">PK</option>
-            <option value="RR">RR</option>
-            <option value="RCB">RCB</option>
-            <option value="SH">SH</option>
           </select>
         </div>
 
         <p>Now, select a bowler of your choice</p>
         <select id="playerName">
           <option>Choose Player</option>
-          <option>Ishanth Sharma</option>
-          <option>Mohammad Shami</option>
-          <option>Jasprit Bumrah</option>
         </select>
 
         <p>Choose death over</p>
@@ -115,6 +98,43 @@
     </div>
     <script src="data.js"></script>
     <script>
+      document.getElementById("teamA").addEventListener("change", function () {
+        var selVal = this.value;
+        var getTeams = teams.filter(function (obj) {
+          return obj[1] !== selVal;
+        });
+
+        getTeams.unshift(["Bowling", ""]);
+
+        var teamB = document.getElementById("teamB");
+
+        teamB.innerHTML = "";
+
+        for (var i = 0; i < getTeams.length; i++) {
+          var option = document.createElement("option");
+          option.innerText = getTeams[i][0];
+          option.value = getTeams[i][1];
+          teamB.appendChild(option);
+        }
+
+        // console.log("You selected: ", getTeams);
+      });
+      document.getElementById("teamB").addEventListener("change", function () {
+        var selVal = this.value;
+        bowlers[selVal].unshift(["choose player"]);
+        // console.log("You selected: ", bowlers[selVal]);
+
+        var playerSelect = document.getElementById("playerName");
+
+        playerSelect.innerHTML = "";
+
+        for (var i = 0; i < bowlers[selVal].length; i++) {
+          var option = document.createElement("option");
+          option.innerText = bowlers[selVal][i];
+          option.value = bowlers[selVal][i];
+          playerSelect.appendChild(option);
+        }
+      });
       // ================= ModelBox ========================//
 
       document.getElementById("method").addEventListener("click", function () {

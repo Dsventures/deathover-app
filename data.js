@@ -76,3 +76,24 @@ var dataset = [
     wicket3: "1",
   },
 ];
+
+var teams = [
+  ["Mumbai Indians", "MI"],
+  ["Punjab Kings", "PK"],
+  ["Delhi Capitals", "DC"],
+  ["Lucknow Super Giants", "LSG"],
+  ["Rajasthan Royals", "RR"],
+];
+
+var bowlers = {
+  MI: ["Jasprit Bumrah", "Tymal Mills", "Jaydev Unadkat", "Daniel Sams"],
+  PK: ["Kagiso Rabada", "Ishan Porel", "Arshdeep Singh", "Odean Smith"],
+  DC: ["Shardul Thakur", "Anrich Nortje ", "Chetan Sakariya ", "Lungi Ngidi"],
+  LSG: ["Jason Holder", "Mark Wood", "Marcus Stoinis", "Avesh Khan"],
+  RR: [
+    "Trent Boult",
+    "Prasidh Krishna",
+    "Nathan Coulter-Nile",
+    "Navdeep Saini",
+  ],
+};
