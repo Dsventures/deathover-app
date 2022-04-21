@@ -1,7 +1,7 @@
 .tv9-interactive__wrapper{
     position: relative;
     overflow: hidden;
-    width: 100%; max-width: 300px; margin: 0 auto 20px auto;
+    width: 100%; max-width: 380px; margin: 0 auto 20px auto;
 }
 .tv9-interactives {
     margin: 0 auto;
@@ -138,6 +138,8 @@
     background-color: #000;
     opacity: 0.8;
     z-index: 49;
+    top: 0;
+    left: 0;
 }
 
 .tv9-interactive__wrapper .modelbox .modelbox__inner {
@@ -148,6 +150,11 @@
 
 .tv9-interactive__wrapper .modelbox .modelbox__content {
     margin-top: 40px;
+}
+.tv9-interactive__wrapper .modelbox .modelbox__content p{
+    font-size: 14px;
+    margin-bottom: 10px;
+    line-height: 16px;
 }
 
 .tv9-interactive__wrapper .modelbox #closeBtn {
