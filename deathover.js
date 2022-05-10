@@ -20,18 +20,48 @@ document.getElementById("teamA").addEventListener("change", function () {
   // console.log("You selected: ", getTeams);
 });
 document.getElementById("teamB").addEventListener("change", function () {
-  var selVal = this.value;
-  bowlers[selVal].unshift(["choose player"]);
-  // console.log("You selected: ", bowlers[selVal]);
+  var teamBVal = this.value;
+  var teamAVal = document.getElementById("teamA").value;
+  // console.log(teamAVal, teamBVal);
+
+  var fd1 = wicketFormulaData
+    .filter(function (obj) {
+      // console.log(obj);
+      return obj["team"] === abrev[teamAVal];
+    })
+    .map(function (obj) {
+      return obj["playerName"];
+    })
+    .filter(function (value, index, self) {
+      return self.indexOf(value) === index;
+    });
+
+  // var fd2 = ecoFormulaData
+  //   .filter(function (obj) {
+  //     // console.log(obj);
+  //     return obj["team"] === abrev[teamAVal];
+  //   })
+  //   .map(function (obj) {
+  //     return obj["playerName"];
+  //   })
+  //   .filter(function (value, index, self) {
+  //     return self.indexOf(value) === index;
+  //   });
+
+  fd1.unshift("Choose player");
+  // console.log("wicketFormulaData", fd1);
+  // console.log("ecoFormulaData", fd2);
+
+  // // console.log("You selected: ", bowlers[selVal]);
 
   var playerSelect = document.getElementById("playerName");
 
   playerSelect.innerHTML = "";
 
-  for (var i = 0; i < bowlers[selVal].length; i++) {
+  for (var i = 0; i < fd1.length; i++) {
     var option = document.createElement("option");
-    option.innerText = bowlers[selVal][i];
-    option.value = bowlers[selVal][i];
+    option.innerText = fd1[i];
+    option.value = fd1[i];
     playerSelect.appendChild(option);
   }
 });
@@ -63,61 +93,125 @@ document.getElementById("submit").addEventListener("click", function () {
   document.getElementsByClassName("card")[0].style.display = "none";
   document.getElementsByClassName("cardA")[0].style.display = "block";
 
-  // var playerSelect = document.getElementById('language');
-  // var selPlayer = playerSelect.options[select.selectedIndex].value;
-  // console.log(selPlayer);
+  var teamBVal = document.getElementById("teamB").value;
+  var teamAVal = document.getElementById("teamA").value;
+  var selectPlayer = document.getElementById("playerName").value;
 
-  var selPlayer = "Jasprit Bumrah";
+  var playerSelect = document.getElementById("playerName");
+  var selPlayer = playerSelect.options[playerSelect.selectedIndex].value;
 
-  var selectedPlayerData = getPlayerData(selPlayer);
+  var selDeathover;
 
-  var calcOutput = formula(selectedPlayerData);
+  var deathover_options = document.getElementsByName("deathover_param");
+  if (deathover_options) {
+    for (var i = 0; i < deathover_options.length; i++) {
+      if (deathover_options[i].checked) {
+        selDeathover = deathover_options[i].value;
+      }
+    }
+  }
 
-  // console.log("selectedPlayerData", selectedPlayerData);
+  console.log(teamAVal, teamBVal);
+  console.log(selPlayer);
+  console.log(selDeathover);
+
+  // var selPlayer = "Jasprit Bumrah";
+
+  var selectedPlayer_WicData = getPlayerData(
+    teamAVal,
+    teamBVal,
+    selPlayer,
+    wicketFormulaData
+  );
+
+  var selectedPlayer_EcoData = getPlayerData(
+    teamAVal,
+    teamBVal,
+    selPlayer,
+    ecoFormulaData
+  );
+
+  var calcWickOutput = wicketFormula(selectedPlayer_WicData, selDeathover);
+  var calcEcoOutput = ecoFormula(selectedPlayer_EcoData, selDeathover);
+
+  console.log("selectedPlayer_WicData", selectedPlayer_WicData);
+  console.log("selectedPlayer_EcoData", selectedPlayer_EcoData);
+
+  document.getElementById("weightedWic").innerHTML = calcWickOutput;
+  document.getElementById("weightedEco").innerHTML = calcEcoOutput;
+  document.getElementById("bowlerPic").src =
+    "img/players/" + selectPlayer.toLowerCase().replace(/\s+/g, "-") + ".jpg";
+  // console.log("calcWickOutput", calcWickOutput);
+  // console.log("calcEcoOutput", calcEcoOutput);
 
   // Get Selected Player Data
-  function getPlayerData(name) {
+  function getPlayerData(teamA, teamB, playerName, dataset) {
+    console.log(teamA, teamB, playerName, dataset);
     return dataset.filter(function (obj) {
-      return obj.player_name === name;
+      return (
+        obj.playerName === playerName &&
+        obj.team === abrev[teamA] &&
+        obj.againstTeam === abrev[teamB]
+      );
     });
   }
 
-  function filterAndSum(data, property) {
-    return data
-      .filter(function (items) {
-        return items.data_Point !== "Venue";
-      })
-      .map(function (obj) {
-        return parseFloat(obj[property]) * 0.33;
-      })
-      .reduce(function (acc, val) {
-        return acc + val;
-      });
+  // function filterAndSum(data, property) {
+  //   return data
+  //     .filter(function (items) {
+  //       return items.data_Point !== "Venue";
+  //     })
+  //     .map(function (obj) {
+  //       return parseFloat(obj[property]) * 0.33;
+  //     })
+  //     .reduce(function (acc, val) {
+  //       return acc + val;
+  //     });
+  // }
+
+  function wicketProbability(cat, data) {
+    // console.log("test", cat, data);
+    return parseFloat(
+      (
+        Number(data[0]["wicketDeathOvers(" + cat + ")"]) /
+        Number(data[0]["oversBowledDeathOvers(" + cat + ")"])
+      ).toFixed(2)
+    );
   }
 
-  function formula(data) {
-    var sumEconomyRate = filterAndSum(data, "economyrate").toFixed(2);
-    var sumStrikeRate = filterAndSum(data, "strikerate").toFixed(2);
-    var sumWicket = Math.round(
-      data
-        .filter(function (items) {
-          return items.data_Point !== "Venue";
-        })
-        .map(function (obj) {
-          return (
-            Math.round(parseInt(obj["wickets"]) / parseInt(obj["innings"])) *
-            0.33
-          );
-        })
-        .reduce(function (acc, val) {
-          return acc + val;
-        })
-    );
+  function wicketFormula(wicdata, deatover_sel) {
+    console.log("wicdata", wicdata);
+    var t20Probability = wicketProbability("t20i", wicdata);
 
-    document.getElementById("weightedEco").innerHTML = sumEconomyRate;
-    document.getElementById("weightedSR").innerHTML = sumStrikeRate;
-    document.getElementById("weightedWic").innerHTML = sumWicket;
+    var iplProbability = wicketProbability("ipl", wicdata);
 
-    console.log(sumEconomyRate, sumStrikeRate, sumWicket);
+    var atProbability = wicketProbability("at", wicdata);
+
+    // console.log(t20Probability, iplProbability, atProbability);
+
+    var formula =
+      ((t20Probability + iplProbability + atProbability) / 3) *
+      parseInt(deatover_sel) *
+      100;
+
+    return formula.toFixed(2);
+  }
+
+  function ecoFormula(ecodata, deatover_sel) {
+    console.log("ecodata", ecodata[0]);
+    var ecoSum =
+      parseFloat(ecodata[0]["economy(t20i)"]) +
+      parseFloat(ecodata[0]["economy(ipl)"]) +
+      parseFloat(ecodata[0]["economy(at)"]);
+
+    var weightageSum =
+      parseFloat(ecodata[0]["weightage(t20i)"]) +
+      parseFloat(ecodata[0]["weightage(ipl)"]) +
+      parseFloat(ecodata[0]["weightage(at)"]);
+
+    var eco_output =
+      (ecoSum / Math.round(weightageSum) / 3) * parseInt(deatover_sel);
+
+    return eco_output.toFixed(2);
   }
 });
