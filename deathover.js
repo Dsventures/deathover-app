@@ -193,7 +193,7 @@ document.getElementById("submit").addEventListener("click", function () {
     selectPlayer +
     " will approximately cede <span>" +
     calcEcoOutput +
-    "runs in " +
+    " runs in " +
     selDeathover +
     " over/s </span> and his chance of taking a wicket is <span>" +
     calcWickOutput +
