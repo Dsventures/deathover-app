@@ -221,7 +221,7 @@ document.getElementById("submit").addEventListener("click", function () {
       calcEcoOutput +
       " runs in " +
       selDeathover +
-      " overs </span> and his chance of taking a wicket is <span>" +
+      " overs </span>(approximate) and his chance of taking a wicket is <span>" +
       calcWickOutput +
       "%</span>.";
 
