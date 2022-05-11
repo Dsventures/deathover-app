@@ -214,6 +214,11 @@ document.getElementById("submit").addEventListener("click", function () {
     document.getElementById("bowlerPic").src =
       "img/players/" + selectPlayer.toLowerCase().replace(/\s+/g, "-") + ".jpg";
 
+    if (selDeathover === "2") {
+      var oversTxt = "overs";
+    } else {
+      var oversTxt = "over";
+    }
     var outputSentence =
       "<span>" +
       selectPlayer +
@@ -221,7 +226,9 @@ document.getElementById("submit").addEventListener("click", function () {
       calcEcoOutput +
       " runs in " +
       selDeathover +
-      " overs </span>(approximate) and his chance of taking a wicket is <span>" +
+      " " +
+      oversTxt +
+      "</span> (approximate) and his chance of taking a wicket is <span>" +
       calcWickOutput +
       "%</span>.";
 
