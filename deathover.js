@@ -151,8 +151,8 @@ document.getElementById("submit").addEventListener("click", function () {
   console.log("selectedPlayer_WicData", selectedPlayer_WicData);
   console.log("selectedPlayer_EcoData", selectedPlayer_EcoData);
 
-  document.getElementById("weightedWic").innerHTML = calcWickOutput;
-  document.getElementById("weightedEco").innerHTML = calcEcoOutput;
+  // document.getElementById("weightedWic").innerHTML = calcWickOutput;
+  // document.getElementById("weightedEco").innerHTML = calcEcoOutput;
   document.getElementById("bowlerPic").src =
     "img/players/" + selectPlayer.toLowerCase().replace(/\s+/g, "-") + ".jpg";
   // console.log("calcWickOutput", calcWickOutput);
@@ -162,9 +162,9 @@ document.getElementById("submit").addEventListener("click", function () {
     "The " +
     selectPlayer +
     " will approximately cede " +
-    calcWickOutput +
-    " Runs in (1/2) over/s and his chance of taking a wicket is " +
     calcEcoOutput +
+    " Runs in (1/2) over/s and his chance of taking a wicket is " +
+    calcWickOutput +
     " percentage.";
 
   document.getElementById("outputSent").innerHTML = outputSentence;
