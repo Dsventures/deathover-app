@@ -4,7 +4,7 @@ document.getElementById("teamA").addEventListener("change", function () {
     return obj[1] !== selVal;
   });
 
-  getTeams.unshift(["Bowling", ""]);
+  getTeams.unshift(["Against team", ""]);
 
   var teamB = document.getElementById("teamB");
 
