@@ -202,6 +202,17 @@
             animation: fadeIn 0.5s 0s forwards cubic-bezier(0.000, 0.000, 0.580, 1.000);
 }
 
+#disclaimer{
+        background-color: rgb(0 0 0 / 73%);
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            position: absolute;
+            width: 70%;
+}
+
+#disclaimerTxt { display: block;margin: 10px 0;}
+
 @keyframes fadeInLeft {
     to {
         opacity: 1;

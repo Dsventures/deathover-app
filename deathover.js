@@ -65,8 +65,39 @@ document.getElementById("teamB").addEventListener("change", function () {
     playerSelect.appendChild(option);
   }
 });
+
+document.getElementById("playerName").addEventListener("change", function () {
+  var playerName = this.value;
+  var teamAVal = document.getElementById("teamA").value;
+  var teamBVal = document.getElementById("teamB").value;
+  console.log(playerName, teamAVal, teamBVal);
+  var fd = wicketFormulaData
+    .filter(function (obj) {
+      return obj["playerName"] === playerName;
+    })
+    .map(function (obj) {
+      return obj["againstTeam"];
+    });
+
+  if (!fd.includes(abrev[teamBVal])) {
+    document.getElementById("disclaimer").style.display = "block";
+    document.getElementById("disclaimerTxt").innerHTML =
+      "The " +
+      playerName +
+      " has not played against " +
+      teamBVal +
+      " in this IPL. However, calculations are based on his T20I and other IPL performances.";
+  }
+  // console.log(fd);
+  // console.log(fd.includes(abrev[teamBVal]));
+});
 // ================= ModelBox ========================//
 
+document
+  .getElementById("closeDisclaimer")
+  .addEventListener("click", function () {
+    document.getElementById("disclaimer").style.display = "none";
+  });
 document.getElementById("method").addEventListener("click", function () {
   document.getElementsByClassName("modelbox")[0].style.display = "block";
   document.getElementsByClassName("model-blackout")[0].style.display = "block";
