@@ -34,7 +34,7 @@
 /* .tv9-interactives p {
     margin: 0 0 15px 0;
 } */
-.tv9-interactives__lead { font-size: 18px; line-height: 20px;width: 280px;margin: 0 auto 15px auto; font-weight: bold;}
+.tv9-interactives__lead { font-size: 18px; line-height: 20px;width: 100%;margin: 0 auto 15px auto; font-weight: bold;}
 .tv9-interactives .card {
     width: 100%;
     max-width: 300px;
