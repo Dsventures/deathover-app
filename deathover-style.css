@@ -219,7 +219,10 @@ font-family: 'Georama',
             line-height: 16px;
 }
 #outputSent span:first-child{
-    font-size: 18px; display: block; color: #fff; margin-bottom: 10px;
+    font-size: 18px;
+        display: block;
+        color: #fff;
+        margin-bottom: 3px;
 }
 #outputSent span{
     color: #f5ec95; font-weight: bold;
