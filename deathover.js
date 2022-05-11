@@ -130,7 +130,7 @@ document.getElementById("resetBtn2").addEventListener("click", function () {
   teamBVal.innerHTML = "<option>Against Team</option>";
   var playerName = document.getElementById("playerName");
   playerName.innerHTML = null;
-  playerName.innerHTML = "<option>Choose player</option>";
+  playerName.innerHTML = "<option>Choose bowler</option>";
   document.getElementById("submitError").style.display = "none";
 });
 
@@ -145,7 +145,7 @@ document.getElementById("resetBtn").addEventListener("click", function () {
   teamBVal.innerHTML = "<option>Against Team</option>";
   var playerName = document.getElementById("playerName");
   playerName.innerHTML = null;
-  playerName.innerHTML = "<option>Choose player</option>";
+  playerName.innerHTML = "<option>Choose bowler</option>";
   document.getElementById("submitError").style.display = "none";
 });
 
