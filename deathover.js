@@ -49,7 +49,7 @@ document.getElementById("teamB").addEventListener("change", function () {
   //     return self.indexOf(value) === index;
   //   });
 
-  fd1.unshift("Choose player");
+  fd1.unshift("Choose bowler");
   // console.log("wicketFormulaData", fd1);
   // console.log("ecoFormulaData", fd2);
 
@@ -104,7 +104,7 @@ document
     teamBVal.innerHTML = "<option>Against Team</option>";
     var playerName = document.getElementById("playerName");
     playerName.innerHTML = null;
-    playerName.innerHTML = "<option>Choose player</option>";
+    playerName.innerHTML = "<option>Choose bowler</option>";
   });
 document.getElementById("method").addEventListener("click", function () {
   document.getElementsByClassName("modelbox")[0].style.display = "block";
@@ -156,15 +156,18 @@ document.getElementById("submit").addEventListener("click", function () {
   var teamAVal = document.getElementById("teamA").value;
   var selectPlayer = document.getElementById("playerName").value;
 
+  // console.log(teamBVal, teamAVal, selectPlayer);
   if (
+    teamBVal === "Against team" &&
     teamAVal === "Team" &&
-    teamBVal === "Another team" &&
-    selectPlayer === "Choose Player"
+    selectPlayer === "Choose bowler"
   ) {
-    document.getElementById("submitError").style.display = "block";
-    document.getElementById("submitError").innerHTML =
-      "Choose teams and player";
+    console.log("Select team & player");
   } else {
+    renderData();
+  }
+
+  function renderData() {
     document.getElementsByClassName("card")[0].style.display = "none";
     document.getElementsByClassName("cardA")[0].style.display = "block";
     document.getElementById("resetBtn").style.display = "block";
@@ -223,7 +226,7 @@ document.getElementById("submit").addEventListener("click", function () {
 
   // Get Selected Player Data
   function getPlayerData(teamA, teamB, playerName, dataset) {
-    console.log(teamA, teamB, playerName, dataset);
+    // console.log(teamA, teamB, playerName, dataset);
     return dataset.filter(function (obj) {
       return (
         obj.playerName === playerName &&
