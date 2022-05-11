@@ -204,14 +204,14 @@ font-family: 'Georama',
 
 #outputSent {
         position: absolute;
-            width: 50%;
-            bottom: 0;
+            width: 100%;
+            bottom: 55px;
             color: #fff;
             font-weight: 600;
             right: 0;
             /* transform: translateX(-50%); */
             font-size: 14px;
-            background-color: #00000090;
+            background-color: #00000080;
             padding: 18px 6px;
             box-sizing: border-box;
             animation: fadeIn 0.5s 0s forwards cubic-bezier(0.000, 0.000, 0.580, 1.000);
