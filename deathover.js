@@ -115,6 +115,10 @@ document.getElementById("closeBtn").addEventListener("click", function () {
   document.getElementsByClassName("modelbox")[0].style.display = "none";
   document.getElementsByClassName("model-blackout")[0].style.display = "none";
 });
+document.getElementById("closeBtnModel").addEventListener("click", function () {
+  document.getElementsByClassName("modelbox")[0].style.display = "none";
+  document.getElementsByClassName("model-blackout")[0].style.display = "none";
+});
 
 // ===================== .end ModelBox ========================//
 
@@ -153,16 +157,14 @@ document.getElementById("submit").addEventListener("click", function () {
   var selectPlayer = document.getElementById("playerName").value;
 
   if (
-    teamAVal === "Team" ||
-    teamBVal === "Another team" ||
+    teamAVal === "Team" &&
+    teamBVal === "Another team" &&
     selectPlayer === "Choose Player"
   ) {
     document.getElementById("submitError").style.display = "block";
     document.getElementById("submitError").innerHTML =
       "Choose teams and player";
   } else {
-    console.log(teamBVal, teamAVal, selectPlayer);
-
     document.getElementsByClassName("card")[0].style.display = "none";
     document.getElementsByClassName("cardA")[0].style.display = "block";
     document.getElementById("resetBtn").style.display = "block";

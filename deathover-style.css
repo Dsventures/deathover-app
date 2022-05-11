@@ -1,7 +1,7 @@
 .tv9-interactive__wrapper{
     position: relative;
     overflow: hidden;
-    width: 100%; max-width: 300px; margin: 0 auto 20px auto;
+    width: 100%; margin: 0 auto 20px auto;
 }
 .tv9-interactives {
     margin: 0 auto;
@@ -28,13 +28,16 @@
     letter-spacing: 0em;
     margin: 0 0 15px 0;
     text-transform: uppercase;
+    font-family: 'Georama',
+            sans-serif;
 }
 /* .tv9-interactives p {
     margin: 0 0 15px 0;
 } */
 .tv9-interactives__lead { font-size: 14px; line-height: 16px;width: 280px;margin: 0 auto 15px auto;}
 .tv9-interactives .card {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     margin: 0 auto;
     min-height: 300px;
     /* border-radius: 10px; */
@@ -44,7 +47,7 @@
     /* background-image: url("img/card-bg.jpg"); */
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 16px;
     box-sizing: border-box;
     align-items: center;
     justify-content: center;
@@ -54,15 +57,24 @@
 
 .tv9-interactives__points{
     display: flex; justify-content: space-between; column-gap: 10px; margin-bottom: 15px;
+    font-family: 'Georama',
+            sans-serif;
 }
 .tv9-interactives #teamA, .tv9-interactives #teamB, .tv9-interactives #playerName {
     background-color: #000;
     color: #fff;
     padding: 5px 10px;
     font-size: 13px;
+    font-family: 'Georama',
+            sans-serif;
 }
 .tv9-interactives .card p {
-    font-weight: 500;margin: 0 0 10px 0;
+    font-weight: 500;margin: 0 0 10px 0; font-family: 'Georama',
+            sans-serif;
+}
+.tv9-interactives button {
+font-family: 'Georama',
+            sans-serif;
 }
 .tv9-interactives .card-btns2 {
     margin-top: 10px;
@@ -70,7 +82,7 @@
     column-gap: 5px;
 }
 .tv9-interactives #method {
-    background-color: transparent; border: none;cursor: pointer;;
+    background-color: transparent; border: none;cursor: pointer;
 }
 .tv9-interactives .card-btns2 button, #resetBtn{
     outline: none;
@@ -92,7 +104,8 @@
 }
 
 .tv9-interactives .cardA{
-    width: fit-content;
+    width: 100%;
+    max-width: 300px;
     height: 300px;
     margin: 0 auto;
     margin-bottom: 15px;
@@ -126,21 +139,21 @@
     transform: translate(-50%, -50%);
     padding: 10px;
     box-sizing: border-box;
-    min-height: 380vpx;
     border-radius: 20px;
     z-index: 50;
     text-align: center;
+    
 }
 
 .tv9-interactive__wrapper .model-blackout {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    opacity: 0.8;
-    z-index: 49;
-    top: 0;
-    left: 0;
+        position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0 0 0 / 71%);
+            opacity: 0.8;
+            z-index: 49;
+            top: 0;
+            left: 0;
 }
 
 .tv9-interactive__wrapper .modelbox .modelbox__inner {
@@ -153,9 +166,11 @@
     margin-top: 40px;
 }
 .tv9-interactive__wrapper .modelbox .modelbox__content p{
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 10px;
-    line-height: 16px;
+    line-height: 17px;
+    font-family: 'Georama',
+            sans-serif;
 }
 
 .tv9-interactive__wrapper .modelbox #closeBtn {
@@ -224,6 +239,18 @@
 
 #disclaimerTxt { display: block;margin: 10px 0;}
 
+.modelbox, .model-blackout {
+    animation: fadeIn 0.5s 0s forwards cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+
+#closeBtnModel{
+    background-color: #000;
+        color: #fff;
+        padding: 5px 10px;
+        outline: none;
+        border: none;
+}
+
 @keyframes fadeInLeft {
     to {
         opacity: 1;
@@ -246,5 +273,12 @@
     .tv9-interactive__wrapper {
         margin: 20px auto;
     }
-    .tv9-interactive__wrapper .modelbox {width: 300px;}
+    /* .tv9-interactive__wrapper .modelbox {width: 300px;} */
+}
+
+@media (min-width: 768px) {
+    .tv9-interactive__wrapper {
+            max-width: 300px;
+    }
+    
 }
