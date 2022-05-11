@@ -190,13 +190,14 @@ document.getElementById("submit").addEventListener("click", function () {
   // console.log("calcEcoOutput", calcEcoOutput);
 
   var outputSentence =
-    "The " +
     selectPlayer +
-    " will approximately cede " +
+    " will approximately cede <span>" +
     calcEcoOutput +
-    " Runs in (1/2) over/s and his chance of taking a wicket is " +
+    "runs in " +
+    selDeathover +
+    " over/s </span> and his chance of taking a wicket is <span>" +
     calcWickOutput +
-    " percentage.";
+    "%</span>.";
 
   document.getElementById("outputSent").innerHTML = outputSentence;
   // Get Selected Player Data

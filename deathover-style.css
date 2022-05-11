@@ -97,6 +97,7 @@
     margin: 0 auto;
     margin-bottom: 15px;
     overflow: hidden;
+    position: relative;
 }
 .tv9-interactives .cardA .datapoints{
     position: absolute; list-style: none; color: #fff; padding: 0;
@@ -125,7 +126,7 @@
     transform: translate(-50%, -50%);
     padding: 10px;
     box-sizing: border-box;
-    min-height: 380px;
+    min-height: 380vpx;
     border-radius: 20px;
     z-index: 50;
     text-align: center;
@@ -189,17 +190,22 @@
 
 #outputSent {
         position: absolute;
-            width: 94%;
-            bottom: 26px;
+            width: 50%;
+            bottom: 0;
             color: #fff;
-            font-weight: 700;
-            left: 50%;
-            transform: translateX(-50%);
+            font-weight: 600;
+            right: 0;
+            /* transform: translateX(-50%); */
             font-size: 14px;
-            background-color: #00000059;
-            padding: 20px;
+            background-color: #00000090;
+            padding: 18px 6px;
             box-sizing: border-box;
             animation: fadeIn 0.5s 0s forwards cubic-bezier(0.000, 0.000, 0.580, 1.000);
+            margin: 0;
+            line-height: 16px;
+}
+#outputSent span{
+    color: #f5ec95;
 }
 
 #disclaimer{
