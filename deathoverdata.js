@@ -299,7 +299,7 @@ var wicketFormulaData = [
   },
   {
     sNo: "7",
-    team: "Delhi Capitals ",
+    team: "Delhi Capitals",
     playerName: "Shardul Thakur",
     "wicketDeathOvers(t20i)": "22",
     "oversBowledDeathOvers(t20i)": "29",
@@ -319,7 +319,7 @@ var wicketFormulaData = [
   },
   {
     sNo: "7",
-    team: "Delhi Capitals ",
+    team: "Delhi Capitals",
     playerName: "Shardul Thakur",
     "wicketDeathOvers(t20i)": "22",
     "oversBowledDeathOvers(t20i)": "29",
@@ -339,7 +339,7 @@ var wicketFormulaData = [
   },
   {
     sNo: "7",
-    team: "Delhi Capitals ",
+    team: "Delhi Capitals",
     playerName: "Shardul Thakur",
     "wicketDeathOvers(t20i)": "22",
     "oversBowledDeathOvers(t20i)": "29",
@@ -359,7 +359,7 @@ var wicketFormulaData = [
   },
   {
     sNo: "7",
-    team: "Delhi Capitals ",
+    team: "Delhi Capitals",
     playerName: "Shardul Thakur",
     "wicketDeathOvers(t20i)": "22",
     "oversBowledDeathOvers(t20i)": "29",
@@ -379,7 +379,7 @@ var wicketFormulaData = [
   },
   {
     sNo: "7",
-    team: "Delhi Capitals ",
+    team: "Delhi Capitals",
     playerName: "Shardul Thakur",
     "wicketDeathOvers(t20i)": "22",
     "oversBowledDeathOvers(t20i)": "29",
