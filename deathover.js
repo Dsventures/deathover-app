@@ -85,7 +85,7 @@ document.getElementById("playerName").addEventListener("change", function () {
     document.getElementById("disclaimerTxt").innerHTML =
       playerName +
       " has not played against " +
-      teamBVal +
+      abrev[teamBVal] +
       " in this IPL. However, calculations are based on his T20I and other IPL performances.";
   }
   // console.log(fd);
