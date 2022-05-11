@@ -215,8 +215,9 @@ document.getElementById("submit").addEventListener("click", function () {
       "img/players/" + selectPlayer.toLowerCase().replace(/\s+/g, "-") + ".jpg";
 
     var outputSentence =
+      "<span>" +
       selectPlayer +
-      " will approximately cede <span>" +
+      "</span> will approximately cede <span>" +
       calcEcoOutput +
       " runs in " +
       selDeathover +

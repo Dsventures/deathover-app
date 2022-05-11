@@ -205,21 +205,24 @@ font-family: 'Georama',
 #outputSent {
         position: absolute;
             width: 100%;
-            bottom: 55px;
+            bottom: 60px;
             color: #fff;
             font-weight: 600;
             right: 0;
             /* transform: translateX(-50%); */
             font-size: 14px;
-            background-color: #00000080;
-            padding: 18px 6px;
+            background-color: #0000007a;
+            padding: 18px 12px;
             box-sizing: border-box;
             animation: fadeIn 0.5s 0s forwards cubic-bezier(0.000, 0.000, 0.580, 1.000);
             margin: 0;
             line-height: 16px;
 }
+#outputSent span:first-child{
+    font-size: 18px; display: block; color: #fff; margin-bottom: 10px;
+}
 #outputSent span{
-    color: #f5ec95;
+    color: #f5ec95; font-weight: bold;
 }
 
 #disclaimer{
