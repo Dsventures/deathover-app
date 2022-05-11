@@ -80,18 +80,32 @@ document.getElementById("closeBtn").addEventListener("click", function () {
 // ===================== .end ModelBox ========================//
 
 document.getElementById("resetBtn2").addEventListener("click", function () {
-  document.getElementsByClassName("card")[0].style.display = "flex";
-  document.getElementsByClassName("cardA")[0].style.display = "none";
+  var teamBVal = document.getElementById("teamB");
+  teamBVal.selectedIndex = null;
+  var teamAVal = document.getElementById("teamA");
+  teamAVal.selectedIndex = null;
+  var playerName = document.getElementById("playerName");
+  playerName.selectedIndex = null;
 });
 
 document.getElementById("resetBtn").addEventListener("click", function () {
   document.getElementsByClassName("card")[0].style.display = "flex";
   document.getElementsByClassName("cardA")[0].style.display = "none";
+  document.getElementById("resetBtn").style.display = "none";
+  var teamBVal = document.getElementById("teamB");
+  teamBVal.selectedIndex = null;
+  var teamAVal = document.getElementById("teamA");
+  teamAVal.selectedIndex = null;
+  var playerName = document.getElementById("playerName");
+  playerName.selectedIndex = null;
 });
+
+// ============================== Submit ============================================ //
 
 document.getElementById("submit").addEventListener("click", function () {
   document.getElementsByClassName("card")[0].style.display = "none";
   document.getElementsByClassName("cardA")[0].style.display = "block";
+  document.getElementById("resetBtn").style.display = "block";
 
   var teamBVal = document.getElementById("teamB").value;
   var teamAVal = document.getElementById("teamA").value;
@@ -144,6 +158,16 @@ document.getElementById("submit").addEventListener("click", function () {
   // console.log("calcWickOutput", calcWickOutput);
   // console.log("calcEcoOutput", calcEcoOutput);
 
+  var outputSentence =
+    "The " +
+    selectPlayer +
+    " will approximately cede " +
+    calcWickOutput +
+    " Runs in (1/2) over/s and his chance of taking a wicket is " +
+    calcEcoOutput +
+    " percentage.";
+
+  document.getElementById("outputSent").innerHTML = outputSentence;
   // Get Selected Player Data
   function getPlayerData(teamA, teamB, playerName, dataset) {
     console.log(teamA, teamB, playerName, dataset);

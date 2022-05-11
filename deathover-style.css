@@ -187,6 +187,19 @@
     animation: fadeInLeft 0.5s 1s forwards cubic-bezier(0.000, 0.000, 0.580, 1.000);
 }
 
+#outputSent {
+        position: absolute;
+            width: 94%;
+            bottom: 26px;
+            color: #fff;
+            font-weight: 700;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            background-color: #00000059;
+            padding: 20px;
+            box-sizing: border-box;
+}
 
 @keyframes fadeInLeft {
     to {
