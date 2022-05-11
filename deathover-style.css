@@ -217,6 +217,11 @@
             width: 70%;
 }
 
+#submitError {
+    color: red;
+    font-size: 14px;
+}
+
 #disclaimerTxt { display: block;margin: 10px 0;}
 
 @keyframes fadeInLeft {

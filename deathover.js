@@ -3,6 +3,7 @@ document.getElementById("teamA").addEventListener("change", function () {
   var getTeams = teams.filter(function (obj) {
     return obj[1] !== selVal;
   });
+  document.getElementById("submitError").style.display = "none";
 
   getTeams.unshift(["Against team", ""]);
 
@@ -23,7 +24,7 @@ document.getElementById("teamB").addEventListener("change", function () {
   var teamBVal = this.value;
   var teamAVal = document.getElementById("teamA").value;
   // console.log(teamAVal, teamBVal);
-
+  document.getElementById("submitError").style.display = "none";
   var fd1 = wicketFormulaData
     .filter(function (obj) {
       // console.log(obj);
@@ -82,7 +83,6 @@ document.getElementById("playerName").addEventListener("change", function () {
   if (!fd.includes(abrev[teamBVal])) {
     document.getElementById("disclaimer").style.display = "block";
     document.getElementById("disclaimerTxt").innerHTML =
-      "The " +
       playerName +
       " has not played against " +
       teamBVal +
@@ -97,6 +97,14 @@ document
   .getElementById("closeDisclaimer")
   .addEventListener("click", function () {
     document.getElementById("disclaimer").style.display = "none";
+    var teamAVal = document.getElementById("teamA");
+    teamAVal.selectedIndex = null;
+    var teamBVal = document.getElementById("teamB");
+    teamBVal.innerHTML = null;
+    teamBVal.innerHTML = "<option>Against Team</option>";
+    var playerName = document.getElementById("playerName");
+    playerName.innerHTML = null;
+    playerName.innerHTML = "<option>Choose player</option>";
   });
 document.getElementById("method").addEventListener("click", function () {
   document.getElementsByClassName("modelbox")[0].style.display = "block";
@@ -111,95 +119,106 @@ document.getElementById("closeBtn").addEventListener("click", function () {
 // ===================== .end ModelBox ========================//
 
 document.getElementById("resetBtn2").addEventListener("click", function () {
-  var teamBVal = document.getElementById("teamB");
-  teamBVal.selectedIndex = null;
   var teamAVal = document.getElementById("teamA");
   teamAVal.selectedIndex = null;
+  var teamBVal = document.getElementById("teamB");
+  teamBVal.innerHTML = null;
+  teamBVal.innerHTML = "<option>Against Team</option>";
   var playerName = document.getElementById("playerName");
-  playerName.selectedIndex = null;
+  playerName.innerHTML = null;
+  playerName.innerHTML = "<option>Choose player</option>";
+  document.getElementById("submitError").style.display = "none";
 });
 
 document.getElementById("resetBtn").addEventListener("click", function () {
   document.getElementsByClassName("card")[0].style.display = "flex";
   document.getElementsByClassName("cardA")[0].style.display = "none";
   document.getElementById("resetBtn").style.display = "none";
-  var teamBVal = document.getElementById("teamB");
-  teamBVal.selectedIndex = null;
   var teamAVal = document.getElementById("teamA");
   teamAVal.selectedIndex = null;
+  var teamBVal = document.getElementById("teamB");
+  teamBVal.innerHTML = null;
+  teamBVal.innerHTML = "<option>Against Team</option>";
   var playerName = document.getElementById("playerName");
-  playerName.selectedIndex = null;
+  playerName.innerHTML = null;
+  playerName.innerHTML = "<option>Choose player</option>";
+  document.getElementById("submitError").style.display = "none";
 });
 
 // ============================== Submit ============================================ //
 
 document.getElementById("submit").addEventListener("click", function () {
-  document.getElementsByClassName("card")[0].style.display = "none";
-  document.getElementsByClassName("cardA")[0].style.display = "block";
-  document.getElementById("resetBtn").style.display = "block";
-
   var teamBVal = document.getElementById("teamB").value;
   var teamAVal = document.getElementById("teamA").value;
   var selectPlayer = document.getElementById("playerName").value;
 
-  var playerSelect = document.getElementById("playerName");
-  var selPlayer = playerSelect.options[playerSelect.selectedIndex].value;
+  if (
+    teamAVal === "Team" ||
+    teamBVal === "Another team" ||
+    selectPlayer === "Choose Player"
+  ) {
+    document.getElementById("submitError").style.display = "block";
+    document.getElementById("submitError").innerHTML =
+      "Choose teams and player";
+  } else {
+    console.log(teamBVal, teamAVal, selectPlayer);
 
-  var selDeathover;
+    document.getElementsByClassName("card")[0].style.display = "none";
+    document.getElementsByClassName("cardA")[0].style.display = "block";
+    document.getElementById("resetBtn").style.display = "block";
 
-  var deathover_options = document.getElementsByName("deathover_param");
-  if (deathover_options) {
-    for (var i = 0; i < deathover_options.length; i++) {
-      if (deathover_options[i].checked) {
-        selDeathover = deathover_options[i].value;
+    var playerSelect = document.getElementById("playerName");
+    var selPlayer = playerSelect.options[playerSelect.selectedIndex].value;
+
+    var selDeathover;
+
+    var deathover_options = document.getElementsByName("deathover_param");
+    if (deathover_options) {
+      for (var i = 0; i < deathover_options.length; i++) {
+        if (deathover_options[i].checked) {
+          selDeathover = deathover_options[i].value;
+        }
       }
     }
+
+    // var selPlayer = "Jasprit Bumrah";
+
+    var selectedPlayer_WicData = getPlayerData(
+      teamAVal,
+      teamBVal,
+      selPlayer,
+      wicketFormulaData
+    );
+
+    var selectedPlayer_EcoData = getPlayerData(
+      teamAVal,
+      teamBVal,
+      selPlayer,
+      ecoFormulaData
+    );
+
+    var calcWickOutput = wicketFormula(selectedPlayer_WicData, selDeathover);
+    var calcEcoOutput = ecoFormula(selectedPlayer_EcoData, selDeathover);
+
+    console.log("selectedPlayer_WicData", selectedPlayer_WicData);
+    console.log("selectedPlayer_EcoData", selectedPlayer_EcoData);
+
+    document.getElementById("bowlerPic").src =
+      "img/players/" + selectPlayer.toLowerCase().replace(/\s+/g, "-") + ".jpg";
+
+    var outputSentence =
+      selectPlayer +
+      " will approximately cede <span>" +
+      calcEcoOutput +
+      " runs in " +
+      selDeathover +
+      " over/s </span> and his chance of taking a wicket is <span>" +
+      calcWickOutput +
+      "%</span>.";
+
+    document.getElementById("outputSent").innerHTML = outputSentence;
   }
 
-  console.log(teamAVal, teamBVal);
-  console.log(selPlayer);
-  console.log(selDeathover);
-
-  // var selPlayer = "Jasprit Bumrah";
-
-  var selectedPlayer_WicData = getPlayerData(
-    teamAVal,
-    teamBVal,
-    selPlayer,
-    wicketFormulaData
-  );
-
-  var selectedPlayer_EcoData = getPlayerData(
-    teamAVal,
-    teamBVal,
-    selPlayer,
-    ecoFormulaData
-  );
-
-  var calcWickOutput = wicketFormula(selectedPlayer_WicData, selDeathover);
-  var calcEcoOutput = ecoFormula(selectedPlayer_EcoData, selDeathover);
-
-  console.log("selectedPlayer_WicData", selectedPlayer_WicData);
-  console.log("selectedPlayer_EcoData", selectedPlayer_EcoData);
-
-  // document.getElementById("weightedWic").innerHTML = calcWickOutput;
-  // document.getElementById("weightedEco").innerHTML = calcEcoOutput;
-  document.getElementById("bowlerPic").src =
-    "img/players/" + selectPlayer.toLowerCase().replace(/\s+/g, "-") + ".jpg";
-  // console.log("calcWickOutput", calcWickOutput);
-  // console.log("calcEcoOutput", calcEcoOutput);
-
-  var outputSentence =
-    selectPlayer +
-    " will approximately cede <span>" +
-    calcEcoOutput +
-    " runs in " +
-    selDeathover +
-    " over/s </span> and his chance of taking a wicket is <span>" +
-    calcWickOutput +
-    "%</span>.";
-
-  document.getElementById("outputSent").innerHTML = outputSentence;
   // Get Selected Player Data
   function getPlayerData(teamA, teamB, playerName, dataset) {
     console.log(teamA, teamB, playerName, dataset);
@@ -211,19 +230,6 @@ document.getElementById("submit").addEventListener("click", function () {
       );
     });
   }
-
-  // function filterAndSum(data, property) {
-  //   return data
-  //     .filter(function (items) {
-  //       return items.data_Point !== "Venue";
-  //     })
-  //     .map(function (obj) {
-  //       return parseFloat(obj[property]) * 0.33;
-  //     })
-  //     .reduce(function (acc, val) {
-  //       return acc + val;
-  //     });
-  // }
 
   function wicketProbability(cat, data) {
     // console.log("test", cat, data);

@@ -90,11 +90,18 @@
 
           <p>Choose death over</p>
           <div class="tv9-interactives__points">
-            <input type="radio" id="over1" name="deathover_param" value="1" />
+            <input
+              type="radio"
+              id="over1"
+              name="deathover_param"
+              value="1"
+              checked="checked"
+            />
             <label for="over1">1 over</label><br />
             <input type="radio" id="over2" name="deathover_param" value="2" />
             <label for="over2">2 overs</label><br />
           </div>
+          <span id="submitError" style="display: none"></span>
           <div class="card-btns2">
             <button id="submit">Submit</button>
             <button id="resetBtn2">Reset</button>
