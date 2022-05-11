@@ -5,7 +5,7 @@ document.getElementById("teamA").addEventListener("change", function () {
   });
   document.getElementById("submitError").style.display = "none";
 
-  getTeams.unshift(["Team two", ""]);
+  getTeams.unshift(["Team 2", ""]);
 
   var teamB = document.getElementById("teamB");
 
@@ -101,7 +101,7 @@ document
     teamAVal.selectedIndex = null;
     var teamBVal = document.getElementById("teamB");
     teamBVal.innerHTML = null;
-    teamBVal.innerHTML = "<option>Team two</option>";
+    teamBVal.innerHTML = "<option>Team 2</option>";
     var playerName = document.getElementById("playerName");
     playerName.innerHTML = null;
     playerName.innerHTML = "<option>Choose bowler</option>";
@@ -128,7 +128,7 @@ document.getElementById("resetBtn2").addEventListener("click", function () {
   teamAVal.selectedIndex = null;
   var teamBVal = document.getElementById("teamB");
   teamBVal.innerHTML = null;
-  teamBVal.innerHTML = "<option>Team two</option>";
+  teamBVal.innerHTML = "<option>Team 2</option>";
   var playerName = document.getElementById("playerName");
   playerName.innerHTML = null;
   playerName.innerHTML = "<option>Choose bowler</option>";
@@ -143,7 +143,7 @@ document.getElementById("resetBtn").addEventListener("click", function () {
   teamAVal.selectedIndex = null;
   var teamBVal = document.getElementById("teamB");
   teamBVal.innerHTML = null;
-  teamBVal.innerHTML = "<option>Team two</option>";
+  teamBVal.innerHTML = "<option>Team 2</option>";
   var playerName = document.getElementById("playerName");
   playerName.innerHTML = null;
   playerName.innerHTML = "<option>Choose bowler</option>";
@@ -159,8 +159,8 @@ document.getElementById("submit").addEventListener("click", function () {
 
   // console.log(teamBVal, teamAVal, selectPlayer);
   if (
-    teamAVal !== "Team" &&
-    teamBVal !== "Team two" &&
+    teamAVal !== "Team 1" &&
+    teamBVal !== "Team 2" &&
     selectPlayer !== "Choose bowler"
   ) {
     renderData();
