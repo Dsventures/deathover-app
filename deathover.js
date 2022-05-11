@@ -5,7 +5,7 @@ document.getElementById("teamA").addEventListener("change", function () {
   });
   document.getElementById("submitError").style.display = "none";
 
-  getTeams.unshift(["Against team", ""]);
+  getTeams.unshift(["Team two", ""]);
 
   var teamB = document.getElementById("teamB");
 
@@ -101,7 +101,7 @@ document
     teamAVal.selectedIndex = null;
     var teamBVal = document.getElementById("teamB");
     teamBVal.innerHTML = null;
-    teamBVal.innerHTML = "<option>Against Team</option>";
+    teamBVal.innerHTML = "<option>Team two</option>";
     var playerName = document.getElementById("playerName");
     playerName.innerHTML = null;
     playerName.innerHTML = "<option>Choose bowler</option>";
@@ -127,7 +127,7 @@ document.getElementById("resetBtn2").addEventListener("click", function () {
   teamAVal.selectedIndex = null;
   var teamBVal = document.getElementById("teamB");
   teamBVal.innerHTML = null;
-  teamBVal.innerHTML = "<option>Against Team</option>";
+  teamBVal.innerHTML = "<option>Team two</option>";
   var playerName = document.getElementById("playerName");
   playerName.innerHTML = null;
   playerName.innerHTML = "<option>Choose bowler</option>";
@@ -142,7 +142,7 @@ document.getElementById("resetBtn").addEventListener("click", function () {
   teamAVal.selectedIndex = null;
   var teamBVal = document.getElementById("teamB");
   teamBVal.innerHTML = null;
-  teamBVal.innerHTML = "<option>Against Team</option>";
+  teamBVal.innerHTML = "<option>Team two</option>";
   var playerName = document.getElementById("playerName");
   playerName.innerHTML = null;
   playerName.innerHTML = "<option>Choose bowler</option>";
@@ -158,13 +158,15 @@ document.getElementById("submit").addEventListener("click", function () {
 
   // console.log(teamBVal, teamAVal, selectPlayer);
   if (
-    teamBVal === "Against team" &&
-    teamAVal === "Team" &&
-    selectPlayer === "Choose bowler"
+    teamAVal !== "Team" &&
+    teamBVal !== "Team two" &&
+    selectPlayer !== "Choose bowler"
   ) {
-    console.log("Select team & player");
-  } else {
     renderData();
+  } else {
+    // console.log("Select team & player");
+    document.getElementById("submitError").innerHTML = "Select team & player";
+    document.getElementById("submitError").style.display = "block";
   }
 
   function renderData() {
@@ -217,7 +219,7 @@ document.getElementById("submit").addEventListener("click", function () {
       calcEcoOutput +
       " runs in " +
       selDeathover +
-      " over/s </span> and his chance of taking a wicket is <span>" +
+      " overs </span> and his chance of taking a wicket is <span>" +
       calcWickOutput +
       "%</span>.";
 
