@@ -86,7 +86,7 @@ document.getElementById("playerName").addEventListener("change", function () {
       playerName +
       " has not played against " +
       abrev[teamBVal] +
-      " in this IPL. However, calculations are based on his T20I and other IPL performances.";
+      " in this IPL.";
   }
   // console.log(fd);
   // console.log(fd.includes(abrev[teamBVal]));
@@ -105,6 +105,7 @@ document
     var playerName = document.getElementById("playerName");
     playerName.innerHTML = null;
     playerName.innerHTML = "<option>Choose bowler</option>";
+    document.getElementById("submitError").style.display = "block";
   });
 document.getElementById("method").addEventListener("click", function () {
   document.getElementsByClassName("modelbox")[0].style.display = "block";
@@ -165,7 +166,7 @@ document.getElementById("submit").addEventListener("click", function () {
     renderData();
   } else {
     // console.log("Select team & player");
-    document.getElementById("submitError").innerHTML = "Select team & player";
+    document.getElementById("submitError").innerHTML = "Select teams & bowler";
     document.getElementById("submitError").style.display = "block";
   }
 
