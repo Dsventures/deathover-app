@@ -1,0 +1,48 @@
+
+var ftGUID_4167853="5245CB04142232";
+var ftConfID_4167853="0";
+var ftParams_4167853="ftOBA=1&ft_domain=www.news9live.com&ft_ifb=1&ft_agentEnv=0&ft_referrer=https%3A%2F%2Fwww.news9live.com%2F&us_privacy=${US_PRIVACY}&cachebuster=767757.839858709&ft_dv=%5B%25ft_dv%25%5D";
+var ftKeyword_4167853="";
+var ftCustom_4167853="";
+var ftSection_4167853="";
+var ftSegment_4167853="";
+var ftSegmentList_4167853=[];
+var ftRuleMatch_4167853="0";
+var ftTimestamp_4167853="1652328176";
+var ftGeoC2_4167853="in";
+var ftGeoState_4167853="tn";
+var ftGeoCity_4167853="chennai";
+var ftISP_4167853="beam telecom pvt ltd";
+var ftSpeed_4167853="broadband";
+var ftDMA_4167853="356007";
+var ftLong_4167853="80.26";
+var ftLat_4167853="13.06";
+var ftPostal_4167853="600002";
+var ftTimeZone_4167853="530";
+var ftMobileCarrier_4167853="";
+var ftImp4167853 = {};
+ftImp4167853.privacy = "x";
+ftImp4167853.guidAge = "-1";
+ftImp4167853.impID = "87667741-EE5A-080C-E2E8-F1D90C34452A";
+ftImp4167853.duid = "FT:5245CB04142232";
+
+ftImp4167853.ft_tpplid = "";
+ftImp4167853.ft_c = {};
+ftImp4167853.gdpr = "";
+ftImp4167853.gdpr_consent = "";
+ftImp4167853.gdpr_pd = "";
+ftImp4167853.oob_consent = "";
+ftImp4167853.gdprStoredConsent = "";
+ftImp4167853.us_privacy = "!!US_PRIVACY!";
+
+ftImp4167853.jsAppend = "1";
+(function(){
+    var tag = document.getElementById('ft_servedby_4167853') || (function(s){
+    	return s[s.length-1];
+    }(document.getElementsByTagName('script'))),
+           js = document.createElement('script');
+    js.src =
+"https://cdn.flashtalking.com/xre/416/4167853/3783297/js/j-4167853-3783297.js";
+    js.id = "ftscript_m4167853";
+    tag.parentNode.insertBefore(js, tag);
+}());
