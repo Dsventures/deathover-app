@@ -222,7 +222,7 @@ document.getElementById("submit").addEventListener("click", function () {
     var outputSentence =
       "<span>" +
       selectPlayer +
-      "</span> will approximately cede <span>" +
+      "</span> will cede <span>" +
       calcEcoOutput +
       " runs in " +
       selDeathover +
