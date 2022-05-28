@@ -1,8 +1,6 @@
 var teams = [
-  ["Lucknow Super Giants", "lsg"],
   ["Rajasthan Royals", "rr"],
   ["Gujarat Titans", "gt"],
-  ["Royal Challengers Bangalore", "rcb"],
 ];
 // var teams = [
 //   ["Delhi Capitals", "dc"],
